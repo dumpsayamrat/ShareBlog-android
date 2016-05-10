@@ -11,16 +11,16 @@ import th.ac.up.ict.se.dump.shareblog.domain.service.BlogService;
 /**
  * Created by 56023 on 10/5/2559.
  */
-public class BlogServiceImpl implements BlogService {
+public class BlogServiceWebImpl implements BlogService {
 
-    private BlogDao blogDao = BlogDaoImpl.instance();
+    private BlogDao blogDao = BlogDaoWebImpl.instance();
     private static BlogService instance;
 
-    private BlogServiceImpl(){}
+    private BlogServiceWebImpl(){}
 
     public static BlogService instance() {
         if (instance == null) {
-            instance = new BlogServiceImpl();
+            instance = new BlogServiceWebImpl();
         }
         return instance;
     }

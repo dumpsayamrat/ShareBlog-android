@@ -10,11 +10,13 @@ import android.widget.EditText;
 
 import th.ac.up.ict.se.dump.shareblog.domain.model.Blog;
 import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceImpl;
+import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceWebImpl;
 import th.ac.up.ict.se.dump.shareblog.domain.service.BlogService;
 
 public class BlogEditActivity extends AppCompatActivity {
 
-    private BlogService blogService = BlogServiceImpl.instance();
+    //private BlogService blogService = BlogServiceImpl.instance();
+    BlogService blogService = BlogServiceWebImpl.instance();
 
     Button btnBlogEditAction;
     EditText edtEditTitle;

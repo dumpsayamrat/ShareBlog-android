@@ -12,7 +12,7 @@ import th.ac.up.ict.se.dump.shareblog.domain.model.Comment;
 public interface BlogService {
 
     public Iterator<Blog> getBlogs();
-    public List<Comment> getComments(Blog blog);
+    public Iterator<Comment> getComments(Blog blog);
     public Blog findById(Long id);
     public Blog save(Blog blog);
     public Blog update(Blog blog);

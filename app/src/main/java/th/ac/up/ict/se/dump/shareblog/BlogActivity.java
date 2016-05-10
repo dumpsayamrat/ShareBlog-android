@@ -21,13 +21,14 @@ import java.util.ArrayList;
 
 import th.ac.up.ict.se.dump.shareblog.domain.model.Blog;
 import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceImpl;
+import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceWebImpl;
 import th.ac.up.ict.se.dump.shareblog.domain.service.BlogService;
 import th.ac.up.ict.se.dump.shareblog.ui.BlogAdapter;
 
 public class BlogActivity extends AppCompatActivity {
 
-    BlogService blogService = BlogServiceImpl.instance();
-
+   // BlogService blogService = BlogServiceImpl.instance();
+    BlogService blogService = BlogServiceWebImpl.instance();
     Button btnAddAc2;
     ListView lvBlogs;
 

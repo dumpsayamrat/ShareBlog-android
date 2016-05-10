@@ -17,7 +17,9 @@ import java.util.ArrayList;
 import th.ac.up.ict.se.dump.shareblog.domain.model.Blog;
 import th.ac.up.ict.se.dump.shareblog.domain.model.Comment;
 import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceImpl;
+import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceWebImpl;
 import th.ac.up.ict.se.dump.shareblog.domain.repository.CommentServiceImpl;
+import th.ac.up.ict.se.dump.shareblog.domain.repository.CommentServiceWebImpl;
 import th.ac.up.ict.se.dump.shareblog.domain.service.BlogService;
 import th.ac.up.ict.se.dump.shareblog.domain.service.CommentService;
 import th.ac.up.ict.se.dump.shareblog.ui.BlogAdapter;
@@ -25,8 +27,10 @@ import th.ac.up.ict.se.dump.shareblog.ui.CommentAdapter;
 
 public class BlogShowActivity extends AppCompatActivity {
 
-    BlogService blogService = BlogServiceImpl.instance();
-    CommentService commentService = CommentServiceImpl.instance();
+    //BlogService blogService = BlogServiceImpl.instance();
+    //CommentService commentService = CommentServiceImpl.instance();
+    BlogService blogService = BlogServiceWebImpl.instance();
+    CommentService commentService = CommentServiceWebImpl.instance();
 
     TextView txtTitle;
     TextView txtAuthor;
@@ -80,8 +84,6 @@ public class BlogShowActivity extends AppCompatActivity {
                 c.setComment(comment);
                 c.setBlog_id(blog.getId());
                 commentService.save(c);
-                /*Comment cc = commentService.findById(c.getId());
-                txtTitle.setText(cc.getBlog_id() + "");*/
                 updateDatabase();
                 edtCommentAuthor.setText("");
                 edtComment.setText("");
@@ -90,8 +92,8 @@ public class BlogShowActivity extends AppCompatActivity {
     }
 
     private void updateDatabase() {
-        //listOfComments = Lists.newArrayList(blogService.getComments(blog));
-        listOfComments = Lists.newArrayList(commentService.getComments());
+        listOfComments = Lists.newArrayList(blogService.getComments(blog));
+        //listOfComments = Lists.newArrayList(commentService.getComments());
         CommentAdapter adapter = new CommentAdapter(
                 this, listOfComments
         );

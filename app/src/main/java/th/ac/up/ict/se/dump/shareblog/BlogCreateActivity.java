@@ -10,11 +10,13 @@ import android.widget.EditText;
 
 import th.ac.up.ict.se.dump.shareblog.domain.model.Blog;
 import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceImpl;
+import th.ac.up.ict.se.dump.shareblog.domain.repository.BlogServiceWebImpl;
 import th.ac.up.ict.se.dump.shareblog.domain.service.BlogService;
 
 public class BlogCreateActivity extends AppCompatActivity {
 
-    BlogService blogService = BlogServiceImpl.instance();
+    //BlogService blogService = BlogServiceImpl.instance();
+    BlogService blogService = BlogServiceWebImpl.instance();
 
     EditText edtCreateTitle;
     EditText edtCreateAuthor;
@@ -45,7 +47,7 @@ public class BlogCreateActivity extends AppCompatActivity {
                 String content = edtCreateContent.getText().toString();
 
                 Blog blog = new Blog(title, author, password, content);
-
+                blog.setStar(0);
                 blogService.save(blog);
 
                 Intent i = new Intent(BlogCreateActivity.this, BlogActivity.class);
