@@ -7,25 +7,26 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" >
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="title"
-            android:id="@+id/txtTitleAdap"
+            android:text="Author"
+            android:id="@+id/txtAuthorCommentAdap"
             android:background="#440604"
-            android:textColor="#ffffff" />
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Author"
-            android:id="@+id/txtAuthorAdap"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="comment"
+            android:id="@+id/txtCommentAdap"
             android:background="#440604"
             android:textColor="#ffffff" />
-    </LinearLayout>
 
+    </LinearLayout>
 </LinearLayout>

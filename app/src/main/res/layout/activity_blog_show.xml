@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="th.ac.up.ict.se.dump.shareblog.BlogShowActivity"
+    android:background="#700704">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView4"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <TextView
+                android:layout_width="351dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Title : "
+                android:id="@+id/txtTitle"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="351dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Author : "
+                android:id="@+id/txtAuthor"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="351dp"
+                android:layout_height="157dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Content : "
+                android:id="@+id/txtContent"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Comments : "
+                android:id="@+id/textView12"
+                android:textColor="#ffffff" />
+
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lvComments"
+                android:layout_below="@+id/scrollView4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/edtCommetAuthor"
+                android:layout_below="@+id/scrollView4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/scrollView4"
+                android:layout_alignEnd="@+id/scrollView4"
+                android:textColor="#000000"
+                android:background="#ffffff"
+                android:hint="Write your name..." />
+
+            <Space
+                android:layout_width="20px"
+                android:layout_height="20px" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="62dp"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/edtComment"
+                android:layout_below="@+id/scrollView4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignRight="@+id/scrollView4"
+                android:layout_alignEnd="@+id/scrollView4"
+                android:background="#ffffff"
+                android:hint="Write a comment..."
+                android:textColor="#000000" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="comment"
+                android:id="@+id/btnCommentAction"
+                android:layout_below="@+id/scrollView4"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:background="#440604"
+                android:textColor="#ffffff"
+                android:layout_gravity="right" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

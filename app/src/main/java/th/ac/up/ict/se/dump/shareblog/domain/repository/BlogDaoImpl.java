@@ -30,7 +30,7 @@ public class BlogDaoImpl implements BlogDao {
 
     @Override
     public List<Comment> getComments(Blog blog) {
-        return Comment.find(Comment.class, "blog_id = ?", blog.getId()+"" );
+        return Comment.find(Comment.class, "author = ?", blog.getId()+"" );
     }
 
     @Override

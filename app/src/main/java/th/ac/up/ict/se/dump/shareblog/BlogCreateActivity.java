@@ -1,6 +1,7 @@
 package th.ac.up.ict.se.dump.shareblog;
 
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,9 @@ public class BlogCreateActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_create);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         edtCreateTitle = (EditText) findViewById(R.id.edtCreateTitle);
         edtCreateAuthor = (EditText) findViewById(R.id.edtCreateAuthor);

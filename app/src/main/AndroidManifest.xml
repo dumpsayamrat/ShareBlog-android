@@ -26,7 +26,7 @@
 
         <meta-data
             android:name="DATABASE"
-            android:value="sugar_example.db" />
+            android:value="shareblog.db" />
         <meta-data
             android:name="VERSION"
             android:value="2" />
@@ -38,7 +38,9 @@
             android:value="th.ac.up.ict.se.dump.shareblog.domain.model" />
 
         <activity android:name=".BlogCreateActivity" />
-        <activity android:name=".BlogActivity"></activity>
+        <activity android:name=".BlogActivity" />
+        <activity android:name=".BlogEditActivity" />
+        <activity android:name=".BlogShowActivity"></activity>
     </application>
 
 </manifest>

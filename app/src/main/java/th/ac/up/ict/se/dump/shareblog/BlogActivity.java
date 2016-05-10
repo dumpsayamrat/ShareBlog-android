@@ -1,13 +1,18 @@
 package th.ac.up.ict.se.dump.shareblog;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import com.google.common.collect.Lists;
@@ -29,10 +34,16 @@ public class BlogActivity extends AppCompatActivity {
     ArrayList<Blog> listOfBlogs;
     String[] menuItems = {"Edit", "Delete"};
 
+    private String passwordEdit = "";
+    private String passwordDelete = "";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         btnAddAc2 = (Button) findViewById(R.id.btnAddAc2);
         lvBlogs = (ListView) findViewById(R.id.lvBlogs);
@@ -44,6 +55,16 @@ public class BlogActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(BlogActivity.this, BlogCreateActivity.class);
+                startActivity(i);
+            }
+        });
+
+        lvBlogs.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Blog blog = listOfBlogs.get(position);
+                Intent i = new Intent(BlogActivity.this, BlogShowActivity.class);
+                i.putExtra("BLOG_ID", blog.getId());
                 startActivity(i);
             }
         });
@@ -67,17 +88,67 @@ public class BlogActivity extends AppCompatActivity {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         int menuItemIndex = item.getItemId();
         String menuItemName = menuItems[menuItemIndex];
-        Blog blog = listOfBlogs.get(info.position);
+        final Blog blog = listOfBlogs.get(info.position);
         if (menuItemName.equals("Delete")) {
-            blogService.delete(blog);
-            updateDatabase();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Enter your password.");
+
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    passwordDelete = input.getText().toString();
+                    if (passwordDelete.equals(blog.getPassword())) {
+                        blogService.delete(blog);
+                        updateDatabase();
+                    }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
         } else if (menuItemName.equals("Edit")) {
 
-            /*Intent i = new Intent(SupplierActivity.this, SupplierEditActivity.class);
-            i.putExtra("SUPPLIER_NAME", supplier.getName());
-            i.putExtra("SUPPLIER_ADDRESS", supplier.getAddress());
-            i.putExtra("SUPPLIER_ID", supplier.getId());
-            startActivity(i);*/
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Enter your password.");
+
+            // Set up the input
+            final EditText input = new EditText(this);
+            // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+            builder.setView(input);
+
+            // Set up the buttons
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    passwordEdit = input.getText().toString();
+                    if (passwordEdit.equals(blog.getPassword())) {
+                        Intent i = new Intent(BlogActivity.this, BlogEditActivity.class);
+                        i.putExtra("BLOG_ID", blog.getId());
+                        startActivity(i);
+                    }
+                }
+            });
+            builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+
+            builder.show();
         }
         return true;
     }
