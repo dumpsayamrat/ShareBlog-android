@@ -19,6 +19,16 @@ public class Blog extends SugarRecord {
 
     private List<Comment> comments;
 
+    public Blog() {
+    }
+
+    public Blog(String title, String author, String password, String content) {
+        this.title = title;
+        this.author = author;
+        this.password = password;
+        this.content = content;
+    }
+
     public List<Comment> getComments() {
         return comments;
     }

@@ -30,7 +30,7 @@ public class CommentDaoImpl implements CommentDao {
 
     @Override
     public Blog getBlog(Comment comment) {
-        return Blog.findById(Blog.class, (Long) comment.getBlog().getId());
+        return Blog.findById(Blog.class, (Long)comment.getBlog_id());
     }
 
     @Override

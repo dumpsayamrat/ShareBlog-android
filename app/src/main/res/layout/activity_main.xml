@@ -32,8 +32,9 @@
             android:textAlignment="center"
             android:textColor="#ffffff"
             android:background="#c70e08"
-            android:textSize="60dp"
-            android:autoText="true" />
+            android:textSize="40dp"
+            android:autoText="true"
+            android:textIsSelectable="false" />
 
         <Button
             android:layout_width="match_parent"
