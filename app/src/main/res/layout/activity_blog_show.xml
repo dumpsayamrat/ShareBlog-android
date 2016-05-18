@@ -47,6 +47,13 @@
                 android:id="@+id/txtContent"
                 android:textColor="#ffffff" />
 
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="107dp"
+                android:layout_height="wrap_content"
+                android:text="Star 120"
+                android:id="@+id/btnStar" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

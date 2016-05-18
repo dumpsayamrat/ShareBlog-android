@@ -35,4 +35,7 @@ public interface BlogRetrofit {
     @GET("/api/blog/{id}/delete")
     Call<Blog> deleteBlog(@Path("id") Long id);
 
+    @GET("/api/blog/{id}/star")
+    Call<Blog> addStar(@Path("id") Long id);
+
 }

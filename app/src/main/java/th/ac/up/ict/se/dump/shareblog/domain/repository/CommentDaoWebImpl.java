@@ -24,7 +24,7 @@ public class CommentDaoWebImpl implements CommentDao {
 
     private CommentDaoWebImpl(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.10.114:8080")
+                .baseUrl("http://192.168.10.104:8000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 

@@ -17,4 +17,5 @@ public interface BlogService {
     public Blog save(Blog blog);
     public Blog update(Blog blog);
     public void delete(Blog blog);
+    public void addStar(Blog blog);
 }

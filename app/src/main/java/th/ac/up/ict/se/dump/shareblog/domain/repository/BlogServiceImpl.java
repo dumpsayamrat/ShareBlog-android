@@ -54,4 +54,9 @@ public class BlogServiceImpl implements BlogService {
     public void delete(Blog blog) {
         blogDao.delete(blog);
     }
+
+    @Override
+    public void addStar(Blog blog) {
+
+    }
 }

@@ -43,6 +43,8 @@ public class BlogShowActivity extends AppCompatActivity {
     EditText edtComment;
     Button btnCommentAction;
 
+    Button btnStar;
+
     Blog blog;
 
     @Override
@@ -63,6 +65,8 @@ public class BlogShowActivity extends AppCompatActivity {
         edtComment = (EditText) findViewById(R.id.edtComment);
         btnCommentAction = (Button) findViewById(R.id.btnCommentAction);
 
+        btnStar = (Button) findViewById(R.id.btnStar);
+
         Intent i = getIntent();
         Long id = i.getLongExtra("BLOG_ID", 0);
 
@@ -70,6 +74,7 @@ public class BlogShowActivity extends AppCompatActivity {
         txtTitle.setText("Title : "+blog.getTitle());
         txtAuthor.setText("Author : "+blog.getAuthor());
         txtContent.setText(blog.getContent());
+        btnStar.setText("STAR "+blog.getStar());
 
         updateDatabase();
 
@@ -87,6 +92,16 @@ public class BlogShowActivity extends AppCompatActivity {
                 updateDatabase();
                 edtCommentAuthor.setText("");
                 edtComment.setText("");
+            }
+        });
+
+        btnStar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                blogService.addStar(blog);
+                Blog b = blogService.findById(blog.getId());
+
+                btnStar.setText("STAR "+b.getStar());
             }
         });
     }

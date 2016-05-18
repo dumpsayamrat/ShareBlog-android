@@ -25,7 +25,7 @@ public class BlogDaoWebImpl implements BlogDao {
 
     private BlogDaoWebImpl(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("http://192.168.10.114:8080")
+                .baseUrl("http://192.168.10.104:8000")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
@@ -97,6 +97,16 @@ public class BlogDaoWebImpl implements BlogDao {
     public void delete(Blog blog) {
 
         Call<Blog> call = blogRetrofit.deleteBlog(blog.getId());
+        try {
+            call.execute();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void addStar(Blog blog) {
+        Call<Blog> call = blogRetrofit.addStar(blog.getId());
         try {
             call.execute();
         } catch (IOException e) {

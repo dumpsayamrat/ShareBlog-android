@@ -54,4 +54,9 @@ public class BlogDaoImpl implements BlogDao {
     public void delete(Blog blog) {
         Blog.delete(blog);
     }
+
+    @Override
+    public void addStar(Blog blog) {
+
+    }
 }
